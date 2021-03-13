@@ -1,0 +1,46 @@
+---
+title: "Sta141BFinal"
+author: "Aman Singh"
+date: "3/13/2021"
+output: html_document
+---
+```{r}
+library(jsonlite)
+library(tidyverse)
+library(httr)
+library(shiny)
+r <- GET(
+  "https://api.yelp.com/v3/businesses/search",
+  add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+  query = list(
+    location = "Davis"
+  )
+)
+
+json <- content(r, as = "text")
+fromJSON(json, flatten = TRUE)$businesses %>% select(name,id)
+x = fromJSON(json, flatten = TRUE)$businesses %>% select(id)
+```
+
+```{r}
+r <- GET(
+  str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[2,]),
+  add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+  query = list(
+  )
+)
+
+json <- content(r, as = "text")
+z = tibble("Name" = fromJSON(json, flatten = TRUE)$name,"Display Phone" = fromJSON(json, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json, flatten = TRUE)$rating,"Location"=fromJSON(json, flatten = TRUE)$location$address1,"Price"=fromJSON(json, flatten = TRUE)$price,"Transactions"=fromJSON(json, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json, flatten = TRUE)$is_closed);z
+```
+
+
+```{r}
+library(sf)
+library(mapview)
+locations = tibble("lon" = fromJSON(json, flatten = TRUE)$coordinates$longitude,"lat"=fromJSON(json, flatten = TRUE)$coordinates$latitude)
+locations_sf <- st_as_sf(locations, coords = c("lon", "lat"), crs = 4326)
+mapview(locations_sf)
+```
+
+
