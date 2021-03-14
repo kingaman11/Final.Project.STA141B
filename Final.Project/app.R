@@ -11,12 +11,13 @@ library(tidyverse)
 library(httr)
 library(shiny)
 library(tm)
-library(SnowballC)
 library(wordcloud)
 library(RCurl)
 library(XML)
 library(wordcloud)
 library(RColorBrewer)
+
+Sys.setenv(YELP_TOKEN = "zB_vgAi6chPRyDfgrHXToL2GAUWb6EzginrW_2eQHoQnkMpONlPUon_F2wzH9YGgbYidaHkn3jMtqxh84YIhavfDHE0kajXKpSg5Nbm1p-98XVc2L59WW4BLV7idX3Yx")
 
 r <- GET(
     "https://api.yelp.com/v3/businesses/search",
@@ -27,7 +28,6 @@ r <- GET(
 )
 
 json <- httr::content(r, as = "text")
-fromJSON(json, flatten = TRUE)$businesses %>% select(name,id)
 x = fromJSON(json, flatten = TRUE)$businesses %>% select(id)
 low = fromJSON(json, flatten = TRUE)$businesses %>% select(name)
 x = x[1:20,]
@@ -548,8 +548,7 @@ ui <- fluidPage(
     
     sidebarLayout(
         sidebarPanel(
-            selectInput("NameofRestaurant", "Name of Restaurant", choices = c("-",z$Name)),
-            #selectInput("messing","",choices = final_words)
+            selectInput("NameofRestaurant", "Name of Restaurant", choices = c("-",z$Name))
         ),
 
         # Show a plot 

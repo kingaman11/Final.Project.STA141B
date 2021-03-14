@@ -28,7 +28,7 @@ r <- GET(
 )
 
 json <- httr::content(r, as = "text")
-fromJSON(json, flatten = TRUE)$businesses %>% select(name,id)
+fromJSON(json, flatten = TRUE)$businesses
 x = fromJSON(json, flatten = TRUE)$businesses %>% select(id)
 low = fromJSON(json, flatten = TRUE)$businesses %>% select(name)
 x = x[1:20,]
