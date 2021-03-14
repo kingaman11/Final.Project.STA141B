@@ -27,7 +27,7 @@ r <- GET(
     )
 )
 
-json <- httr::content(r, as = "text")
+json <- httr::content(r, as = "text", encoding = "UTF-8")
 x = fromJSON(json, flatten = TRUE)$businesses %>% select(id)
 low = fromJSON(json, flatten = TRUE)$businesses %>% select(name)
 x = x[1:20,]
@@ -38,7 +38,7 @@ r1 <- GET(
     query = list(
     )
 )
-json1 <- httr::content(r1, as = "text")
+json1 <- httr::content(r1, as = "text", encoding = "UTF-8")
 
 a = tibble("Name" = fromJSON(json1, flatten = TRUE)$name,"Display Phone" = fromJSON(json1, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json1, flatten = TRUE)$rating,"Location"=fromJSON(json1, flatten = TRUE)$location$address1,"Price"=fromJSON(json1, flatten = TRUE)$price,"Transactions"=fromJSON(json1, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json1, flatten = TRUE)$is_closed)
 
@@ -48,7 +48,7 @@ r2 <- GET(
     query = list(
     )
 )
-json2 <- httr::content(r2, as = "text")
+json2 <- httr::content(r2, as = "text", encoding = "UTF-8")
 
 b = tibble("Name" = fromJSON(json2, flatten = TRUE)$name,"Display Phone" = fromJSON(json2, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json2, flatten = TRUE)$rating,"Location"=fromJSON(json2, flatten = TRUE)$location$address1,"Price"=fromJSON(json2, flatten = TRUE)$price,"Transactions"=fromJSON(json2, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json2, flatten = TRUE)$is_closed)
 
@@ -59,7 +59,7 @@ r3 <- GET(
     query = list(
     )
 )
-json3 <- httr::content(r3, as = "text")
+json3 <- httr::content(r3, as = "text", encoding = "UTF-8")
 
 c = tibble("Name" = fromJSON(json3, flatten = TRUE)$name,"Display Phone" = fromJSON(json3, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json3, flatten = TRUE)$rating,"Location"=fromJSON(json3, flatten = TRUE)$location$address1,"Price"=fromJSON(json3, flatten = TRUE)$price,"Transactions"=fromJSON(json3, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json3, flatten = TRUE)$is_closed)
 
@@ -69,7 +69,7 @@ r4 <- GET(
     query = list(
     )
 )
-json4 <- httr::content(r4, as = "text")
+json4 <- httr::content(r4, as = "text", encoding = "UTF-8")
 d = tibble("Name" = fromJSON(json4, flatten = TRUE)$name,"Display Phone" = fromJSON(json4, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json4, flatten = TRUE)$rating,"Location"=fromJSON(json4, flatten = TRUE)$location$address1,"Price"=fromJSON(json4, flatten = TRUE)$price,"Transactions"=fromJSON(json4, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json4, flatten = TRUE)$is_closed)
 
 r5 <- GET(
@@ -78,7 +78,7 @@ r5 <- GET(
     query = list(
     )
 )
-json5 <- httr::content(r5, as = "text")
+json5 <- httr::content(r5, as = "text", encoding = "UTF-8")
 
 e = tibble("Name" = fromJSON(json5, flatten = TRUE)$name,"Display Phone" = fromJSON(json5, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json5, flatten = TRUE)$rating,"Location"=fromJSON(json5, flatten = TRUE)$location$address1,"Price"=fromJSON(json5, flatten = TRUE)$price,"Transactions"=fromJSON(json5, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json5, flatten = TRUE)$is_closed)
 
@@ -88,7 +88,7 @@ r6 <- GET(
     query = list(
     )
 )
-json6 <- httr::content(r6, as = "text")
+json6 <- httr::content(r6, as = "text", encoding = "UTF-8")
 
 f = tibble("Name" = fromJSON(json6, flatten = TRUE)$name,"Display Phone" = fromJSON(json6, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json6, flatten = TRUE)$rating,"Location"=fromJSON(json6, flatten = TRUE)$location$address1,"Price"=fromJSON(json6, flatten = TRUE)$price,"Transactions"=fromJSON(json6, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json6, flatten = TRUE)$is_closed)
 
@@ -98,7 +98,7 @@ r7 <- GET(
     query = list(
     )
 )
-json7 <- httr::content(r7, as = "text")
+json7 <- httr::content(r7, as = "text", encoding = "UTF-8")
 
 
 g = tibble("Name" = fromJSON(json7, flatten = TRUE)$name,"Display Phone" = fromJSON(json7, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json7, flatten = TRUE)$rating,"Location"=fromJSON(json7, flatten = TRUE)$location$address1,"Price"=fromJSON(json7, flatten = TRUE)$price,"Transactions"=fromJSON(json7, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json7, flatten = TRUE)$is_closed)
@@ -110,7 +110,7 @@ r8 <- GET(
     query = list(
     )
 )
-json8 <- httr::content(r8, as = "text")
+json8 <- httr::content(r8, as = "text", encoding = "UTF-8")
 
 h = tibble("Name" = fromJSON(json8, flatten = TRUE)$name,"Display Phone" = fromJSON(json8, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json8, flatten = TRUE)$rating,"Location"=fromJSON(json8, flatten = TRUE)$location$address1,"Price"=fromJSON(json8, flatten = TRUE)$price,"Transactions"=fromJSON(json8, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json8, flatten = TRUE)$is_closed)
 
@@ -120,7 +120,7 @@ r9 <- GET(
     query = list(
     )
 )
-json9 <- httr::content(r9, as = "text")
+json9 <- httr::content(r9, as = "text", encoding = "UTF-8")
 
 i = tibble("Name" = fromJSON(json9, flatten = TRUE)$name,"Display Phone" = fromJSON(json9, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json9, flatten = TRUE)$rating,"Location"=fromJSON(json9, flatten = TRUE)$location$address1,"Price"=fromJSON(json9, flatten = TRUE)$price,"Transactions"=fromJSON(json9, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json9, flatten = TRUE)$is_closed)
 
@@ -130,7 +130,7 @@ r10 <- GET(
     query = list(
     )
 )
-json10 <- httr::content(r10, as = "text")
+json10 <- httr::content(r10, as = "text", encoding = "UTF-8")
 
 e = tibble("Name" = fromJSON(json10, flatten = TRUE)$name,"Display Phone" = fromJSON(json10, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json10, flatten = TRUE)$rating,"Location"=fromJSON(json10, flatten = TRUE)$location$address1,"Price"=fromJSON(json10, flatten = TRUE)$price,"Transactions"=fromJSON(json10, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json10, flatten = TRUE)$is_closed)
 
@@ -140,7 +140,7 @@ r11 <- GET(
     query = list(
     )
 )
-json11 <- httr::content(r11, as = "text")
+json11 <- httr::content(r11, as = "text", encoding = "UTF-8")
 
 f = tibble("Name" = fromJSON(json11, flatten = TRUE)$name,"Display Phone" = fromJSON(json11, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json11, flatten = TRUE)$rating,"Location"=fromJSON(json11, flatten = TRUE)$location$address1,"Price"=fromJSON(json11, flatten = TRUE)$price,"Transactions"=fromJSON(json11, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json11, flatten = TRUE)$is_closed)
 
@@ -150,7 +150,7 @@ r12 <- GET(
     query = list(
     )
 )
-json12 <- httr::content(r12, as = "text")
+json12 <- httr::content(r12, as = "text", encoding = "UTF-8")
 
 g = tibble("Name" = fromJSON(json12, flatten = TRUE)$name,"Display Phone" = fromJSON(json12, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json12, flatten = TRUE)$rating,"Location"=fromJSON(json12, flatten = TRUE)$location$address1,"Price"=fromJSON(json12, flatten = TRUE)$price,"Transactions"=fromJSON(json12, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json12, flatten = TRUE)$is_closed)
 
@@ -160,7 +160,7 @@ r13 <- GET(
     query = list(
     )
 )
-json13 <- httr::content(r13, as = "text")
+json13 <- httr::content(r13, as = "text", encoding = "UTF-8")
 
 h = tibble("Name" = fromJSON(json13, flatten = TRUE)$name,"Display Phone" = fromJSON(json13, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json13, flatten = TRUE)$rating,"Location"=fromJSON(json13, flatten = TRUE)$location$address1,"Price"=fromJSON(json13, flatten = TRUE)$price,"Transactions"=fromJSON(json13, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json13, flatten = TRUE)$is_closed)
 
@@ -170,7 +170,7 @@ r14 <- GET(
     query = list(
     )
 )
-json14 <- httr::content(r14, as = "text")
+json14 <- httr::content(r14, as = "text", encoding = "UTF-8")
 
 i = tibble("Name" = fromJSON(json14, flatten = TRUE)$name,"Display Phone" = fromJSON(json14, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json14, flatten = TRUE)$rating,"Location"=fromJSON(json14, flatten = TRUE)$location$address1,"Price"=fromJSON(json14, flatten = TRUE)$price,"Transactions"=fromJSON(json14, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json14, flatten = TRUE)$is_closed)
 
@@ -180,7 +180,7 @@ r15 <- GET(
     query = list(
     )
 )
-json15 <- httr::content(r15, as = "text")
+json15 <- httr::content(r15, as = "text", encoding = "UTF-8")
 
 j = tibble("Name" = fromJSON(json15, flatten = TRUE)$name,"Display Phone" = fromJSON(json15, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json15, flatten = TRUE)$rating,"Location"=fromJSON(json15, flatten = TRUE)$location$address1,"Price"=fromJSON(json15, flatten = TRUE)$price,"Transactions"=fromJSON(json15, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json15, flatten = TRUE)$is_closed)
 
@@ -190,7 +190,7 @@ r16 <- GET(
     query = list(
     )
 )
-json16 <- httr::content(r16, as = "text")
+json16 <- httr::content(r16, as = "text", encoding = "UTF-8")
 
 k = tibble("Name" = fromJSON(json16, flatten = TRUE)$name,"Display Phone" = fromJSON(json16, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json16, flatten = TRUE)$rating,"Location"=fromJSON(json16, flatten = TRUE)$location$address1,"Price"=fromJSON(json16, flatten = TRUE)$price,"Transactions"=fromJSON(json16, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json16, flatten = TRUE)$is_closed)
 
@@ -200,7 +200,7 @@ r17 <- GET(
     query = list(
     )
 )
-json17 <- httr::content(r17, as = "text")
+json17 <- httr::content(r17, as = "text", encoding = "UTF-8")
 
 l = tibble("Name" = fromJSON(json17, flatten = TRUE)$name,"Display Phone" = fromJSON(json17, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json17, flatten = TRUE)$rating,"Location"=fromJSON(json17, flatten = TRUE)$location$address1,"Price"=fromJSON(json17, flatten = TRUE)$price,"Transactions"=fromJSON(json17, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json17, flatten = TRUE)$is_closed)
 
@@ -211,7 +211,7 @@ r18 <- GET(
     query = list(
     )
 )
-json18 <- httr::content(r18, as = "text")
+json18 <- httr::content(r18, as = "text", encoding = "UTF-8")
 
 m = tibble("Name" = fromJSON(json18, flatten = TRUE)$name,"Display Phone" = fromJSON(json18, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json18, flatten = TRUE)$rating,"Location"=fromJSON(json18, flatten = TRUE)$location$address1,"Price"=fromJSON(json18, flatten = TRUE)$price,"Transactions"=fromJSON(json18, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json18, flatten = TRUE)$is_closed)
 
@@ -221,7 +221,7 @@ r19 <- GET(
     query = list(
     )
 )
-json19 <- httr::content(r19, as = "text")
+json19 <- httr::content(r19, as = "text", encoding = "UTF-8")
 
 n = tibble("Name" = fromJSON(json19, flatten = TRUE)$name,"Display Phone" = fromJSON(json19, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json19, flatten = TRUE)$rating,"Location"=fromJSON(json19, flatten = TRUE)$location$address1,"Price"=fromJSON(json19, flatten = TRUE)$price,"Transactions"=fromJSON(json19, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json19, flatten = TRUE)$is_closed)
 
@@ -231,7 +231,7 @@ r20 <- GET(
     query = list(
     )
 )
-json20 <- httr::content(r20, as = "text")
+json20 <- httr::content(r20, as = "text", encoding = "UTF-8")
 
 o = tibble("Name" = fromJSON(json20, flatten = TRUE)$name,"Display Phone" = fromJSON(json20, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json20, flatten = TRUE)$rating,"Location"=fromJSON(json20, flatten = TRUE)$location$address1,"Price"=fromJSON(json20, flatten = TRUE)$price,"Transactions"=fromJSON(json20, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json20, flatten = TRUE)$is_closed)
 
@@ -247,7 +247,7 @@ r1 <- GET(
     )
 )
 stop_for_status(r1)
-json1 <- httr::content(r1, as = "text")
+json1 <- httr::content(r1, as = "text", encoding = "UTF-8")
 word.1 = fromJSON(json1, flatten = TRUE)$reviews %>% select(text)
 word.1 = paste(unlist(word.1), collapse =" ")
 word1 = Corpus(VectorSource(word.1))
@@ -261,7 +261,7 @@ r2 <- GET(
     )
 )
 stop_for_status(r2)
-json2 <- httr::content(r2, as = "text")
+json2 <- httr::content(r2, as = "text", encoding = "UTF-8")
 word.2 = fromJSON(json2, flatten = TRUE)$reviews %>% select(text)
 word.2 = paste(unlist(word.2), collapse =" ")
 word2 = Corpus(VectorSource(word.2))
@@ -275,7 +275,7 @@ r3 <- GET(
     )
 )
 stop_for_status(r3)
-json3 <- httr::content(r3, as = "text")
+json3 <- httr::content(r3, as = "text", encoding = "UTF-8")
 word.3 = fromJSON(json3, flatten = TRUE)$reviews %>% select(text)
 word.3 = paste(unlist(word.3), collapse =" ")
 word3 = Corpus(VectorSource(word.3))
@@ -289,7 +289,7 @@ r4 <- GET(
     )
 )
 stop_for_status(r4)
-json4 <- httr::content(r4, as = "text")
+json4 <- httr::content(r4, as = "text", encoding = "UTF-8")
 word.4 = fromJSON(json4, flatten = TRUE)$reviews %>% select(text)
 word.4 = paste(unlist(word.4), collapse =" ")
 word4 = Corpus(VectorSource(word.4))
@@ -304,7 +304,7 @@ r5 <- GET(
     )
 )
 stop_for_status(r5)
-json5 <- httr::content(r5, as = "text")
+json5 <- httr::content(r5, as = "text", encoding = "UTF-8")
 word.5 = fromJSON(json5, flatten = TRUE)$reviews %>% select(text)
 word.5 = paste(unlist(word.5), collapse =" ")
 word5 = Corpus(VectorSource(word.5))
@@ -319,7 +319,7 @@ r6 <- GET(
     )
 )
 stop_for_status(r6)
-json6 <- httr::content(r6, as = "text")
+json6 <- httr::content(r6, as = "text", encoding = "UTF-8")
 word.6 = fromJSON(json6, flatten = TRUE)$reviews %>% select(text)
 word.6 = paste(unlist(word.6), collapse =" ")
 word6 = Corpus(VectorSource(word.6))
@@ -334,7 +334,7 @@ r7 <- GET(
     )
 )
 stop_for_status(r7)
-json7 <- httr::content(r7, as = "text")
+json7 <- httr::content(r7, as = "text", encoding = "UTF-8")
 word.7 = fromJSON(json7, flatten = TRUE)$reviews %>% select(text)
 word.7 = paste(unlist(word.7), collapse =" ")
 word7 = Corpus(VectorSource(word.7))
@@ -349,7 +349,7 @@ r8 <- GET(
     )
 )
 stop_for_status(r8)
-json8 <- httr::content(r8, as = "text")
+json8 <- httr::content(r8, as = "text", encoding = "UTF-8")
 word.8 = fromJSON(json8, flatten = TRUE)$reviews %>% select(text)
 word.8 = paste(unlist(word.8), collapse =" ")
 word8 = Corpus(VectorSource(word.8))
@@ -366,7 +366,7 @@ r9 <- GET(
     )
 )
 stop_for_status(r9)
-json9 <- httr::content(r9, as = "text")
+json9 <- httr::content(r9, as = "text", encoding = "UTF-8")
 word.9 = fromJSON(json9, flatten = TRUE)$reviews %>% select(text)
 word.9 = paste(unlist(word.9), collapse =" ")
 word9 = Corpus(VectorSource(word.9))
@@ -380,7 +380,7 @@ r10 <- GET(
     )
 )
 stop_for_status(r10)
-json10 <- httr::content(r10, as = "text")
+json10 <- httr::content(r10, as = "text", encoding = "UTF-8")
 word.10 = fromJSON(json10, flatten = TRUE)$reviews %>% select(text)
 word.10 = paste(unlist(word.10), collapse =" ")
 word10 = Corpus(VectorSource(word.10))
@@ -396,7 +396,7 @@ r11 <- GET(
     )
 )
 stop_for_status(r11)
-json11 <- httr::content(r11, as = "text")
+json11 <- httr::content(r11, as = "text", encoding = "UTF-8")
 word.11 = fromJSON(json11, flatten = TRUE)$reviews %>% select(text)
 word.11 = paste(unlist(word.11), collapse =" ")
 word11 = Corpus(VectorSource(word.11))
@@ -411,7 +411,7 @@ r12 <- GET(
     )
 )
 stop_for_status(r12)
-json12 <- httr::content(r12, as = "text")
+json12 <- httr::content(r12, as = "text", encoding = "UTF-8")
 word.12 = fromJSON(json12, flatten = TRUE)$reviews %>% select(text)
 word.12 = paste(unlist(word.12), collapse =" ")
 word12 = Corpus(VectorSource(word.12))
@@ -426,7 +426,7 @@ r13 <- GET(
     )
 )
 stop_for_status(r13)
-json13 <- httr::content(r13, as = "text")
+json13 <- httr::content(r13, as = "text", encoding = "UTF-8")
 word.13 = fromJSON(json13, flatten = TRUE)$reviews %>% select(text)
 word.13 = paste(unlist(word.13), collapse =" ")
 word13 = Corpus(VectorSource(word.13))
@@ -441,7 +441,7 @@ r14 <- GET(
     )
 )
 stop_for_status(r14)
-json14 <- httr::content(r14, as = "text")
+json14 <- httr::content(r14, as = "text", encoding = "UTF-8")
 word.14 = fromJSON(json14, flatten = TRUE)$reviews %>% select(text)
 word.14 = paste(unlist(word.14), collapse =" ")
 word14 = Corpus(VectorSource(word.14))
@@ -456,7 +456,7 @@ r15 <- GET(
     )
 )
 stop_for_status(r15)
-json15 <- httr::content(r15, as = "text")
+json15 <- httr::content(r15, as = "text", encoding = "UTF-8")
 word.15 = fromJSON(json15, flatten = TRUE)$reviews %>% select(text)
 word.15 = paste(unlist(word.15), collapse =" ")
 word15 = Corpus(VectorSource(word.15))
@@ -471,7 +471,7 @@ r16 <- GET(
     )
 )
 stop_for_status(r16)
-json16 <- httr::content(r16, as = "text")
+json16 <- httr::content(r16, as = "text", encoding = "UTF-8")
 word.16 = fromJSON(json16, flatten = TRUE)$reviews %>% select(text)
 word.16 = paste(unlist(word.16), collapse =" ")
 word16 = Corpus(VectorSource(word.16))
@@ -485,7 +485,7 @@ r17 <- GET(
     )
 )
 stop_for_status(r17)
-json17 <- httr::content(r17, as = "text")
+json17 <- httr::content(r17, as = "text", encoding = "UTF-8")
 word.17 = fromJSON(json5, flatten = TRUE)$reviews %>% select(text)
 word.17 = paste(unlist(word.17), collapse =" ")
 word17 = Corpus(VectorSource(word.17))
@@ -500,7 +500,7 @@ r18 <- GET(
     )
 )
 stop_for_status(r18)
-json18 <- httr::content(r18, as = "text")
+json18 <- httr::content(r18, as = "text", encoding = "UTF-8")
 word.18 = fromJSON(json18, flatten = TRUE)$reviews %>% select(text)
 word.18 = paste(unlist(word.18), collapse =" ")
 word18 = Corpus(VectorSource(word.18))
@@ -515,7 +515,7 @@ r19 <- GET(
     )
 )
 stop_for_status(r19)
-json19 <- httr::content(r19, as = "text")
+json19 <- httr::content(r19, as = "text", encoding = "UTF-8")
 word.19 = fromJSON(json19, flatten = TRUE)$reviews %>% select(text)
 word.19 = paste(unlist(word.19), collapse =" ")
 word19 = Corpus(VectorSource(word.19))
@@ -530,7 +530,7 @@ r20 <- GET(
     )
 )
 stop_for_status(r20)
-json20 <- httr::content(r20, as = "text")
+json20 <- httr::content(r20, as = "text", encoding = "UTF-8")
 word.20 = fromJSON(json20, flatten = TRUE)$reviews %>% select(text)
 word.20 = paste(unlist(word.20), collapse =" ")
 word20 = Corpus(VectorSource(word.20))
