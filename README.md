@@ -1,7 +1,7 @@
 # Final Project STA 141B
 
 
-What I want to do with this project is to be able to get all the restaurants in Davis and than show an dataframe of whether the place is closed, the phone number, the rating, the display address, as well as the price. I will also display an word map as well. The main word map where the input is "-" is that it shows an wordmap of all the reviews of the restaurants in Davis. When you are more specific in your input, it will show the word map of the reviews that people have put down for that specific restaurant.
+What I want to do with this project is to be able to get all the restaurants in Davis and than show an dataframe of whether the place is closed, the phone number, the rating, the display address, as well as the price. I will also display an word map as well. The main word map where the input is "-" is that it shows an wordmap of all the reviews of the restaurants in Davis. When you are more specific in your input, it will show the word map of the reviews that people have put down for that specific restaurant. This in particular is actually very helpful to me because I have always struggled with finding a place to eat as well as finding out what customers have to say as well as other factors such as the average reviews, if store is open, and how expensive the store is. I am very happy with this app, while it is simplistic, it very straightforward and people can gain a lot from that simplistic software design. This app makes it very easy to make my choice on food. Hopefully in the future I can expand it to include other cities such as my hometown Fremont,California or even by counties.
 
 All of this data has been produced from the YELP API Developers version.
 
