@@ -9,8 +9,10 @@ library(XML)
 library(wordcloud)
 library(RColorBrewer)
 
+#Yelp Token
 Sys.setenv(YELP_TOKEN = "zB_vgAi6chPRyDfgrHXToL2GAUWb6EzginrW_2eQHoQnkMpONlPUon_F2wzH9YGgbYidaHkn3jMtqxh84YIhavfDHE0kajXKpSg5Nbm1p-98XVc2L59WW4BLV7idX3Yx")
 
+#dataanalysis, had to manipulate some data
 r <- GET(
     "https://api.yelp.com/v3/businesses/search",
     add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
