@@ -1,11 +1,3 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
 library(jsonlite)
 library(tidyverse)
 library(httr)
@@ -23,221 +15,19 @@ r <- GET(
     "https://api.yelp.com/v3/businesses/search",
     add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
     query = list(
-        location = "Davis"
+        location = "Davis",
+        limit = "50"
     )
 )
 
 json <- httr::content(r, as = "text", encoding = "UTF-8")
 x = fromJSON(json, flatten = TRUE)$businesses %>% select(id)
-low = fromJSON(json, flatten = TRUE)$businesses %>% select(name)
-x = x[1:20,]
-
-r1 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[1]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json1 <- httr::content(r1, as = "text", encoding = "UTF-8")
-
-a = tibble("Name" = fromJSON(json1, flatten = TRUE)$name,"Display Phone" = fromJSON(json1, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json1, flatten = TRUE)$rating,"Location"=fromJSON(json1, flatten = TRUE)$location$address1,"Price"=fromJSON(json1, flatten = TRUE)$price,"Transactions"=fromJSON(json1, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json1, flatten = TRUE)$is_closed)
-
-r2 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[2]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json2 <- httr::content(r2, as = "text", encoding = "UTF-8")
-
-b = tibble("Name" = fromJSON(json2, flatten = TRUE)$name,"Display Phone" = fromJSON(json2, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json2, flatten = TRUE)$rating,"Location"=fromJSON(json2, flatten = TRUE)$location$address1,"Price"=fromJSON(json2, flatten = TRUE)$price,"Transactions"=fromJSON(json2, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json2, flatten = TRUE)$is_closed)
-
-
-r3 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[3]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json3 <- httr::content(r3, as = "text", encoding = "UTF-8")
-
-c = tibble("Name" = fromJSON(json3, flatten = TRUE)$name,"Display Phone" = fromJSON(json3, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json3, flatten = TRUE)$rating,"Location"=fromJSON(json3, flatten = TRUE)$location$address1,"Price"=fromJSON(json3, flatten = TRUE)$price,"Transactions"=fromJSON(json3, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json3, flatten = TRUE)$is_closed)
-
-r4 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[4]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json4 <- httr::content(r4, as = "text", encoding = "UTF-8")
-d = tibble("Name" = fromJSON(json4, flatten = TRUE)$name,"Display Phone" = fromJSON(json4, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json4, flatten = TRUE)$rating,"Location"=fromJSON(json4, flatten = TRUE)$location$address1,"Price"=fromJSON(json4, flatten = TRUE)$price,"Transactions"=fromJSON(json4, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json4, flatten = TRUE)$is_closed)
-
-r5 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[5]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json5 <- httr::content(r5, as = "text", encoding = "UTF-8")
-
-e = tibble("Name" = fromJSON(json5, flatten = TRUE)$name,"Display Phone" = fromJSON(json5, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json5, flatten = TRUE)$rating,"Location"=fromJSON(json5, flatten = TRUE)$location$address1,"Price"=fromJSON(json5, flatten = TRUE)$price,"Transactions"=fromJSON(json5, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json5, flatten = TRUE)$is_closed)
-
-r6 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[6]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json6 <- httr::content(r6, as = "text", encoding = "UTF-8")
-
-f = tibble("Name" = fromJSON(json6, flatten = TRUE)$name,"Display Phone" = fromJSON(json6, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json6, flatten = TRUE)$rating,"Location"=fromJSON(json6, flatten = TRUE)$location$address1,"Price"=fromJSON(json6, flatten = TRUE)$price,"Transactions"=fromJSON(json6, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json6, flatten = TRUE)$is_closed)
-
-r7 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[7]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json7 <- httr::content(r7, as = "text", encoding = "UTF-8")
-
-
-g = tibble("Name" = fromJSON(json7, flatten = TRUE)$name,"Display Phone" = fromJSON(json7, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json7, flatten = TRUE)$rating,"Location"=fromJSON(json7, flatten = TRUE)$location$address1,"Price"=fromJSON(json7, flatten = TRUE)$price,"Transactions"=fromJSON(json7, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json7, flatten = TRUE)$is_closed)
-
-
-r8 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[8]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json8 <- httr::content(r8, as = "text", encoding = "UTF-8")
-
-h = tibble("Name" = fromJSON(json8, flatten = TRUE)$name,"Display Phone" = fromJSON(json8, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json8, flatten = TRUE)$rating,"Location"=fromJSON(json8, flatten = TRUE)$location$address1,"Price"=fromJSON(json8, flatten = TRUE)$price,"Transactions"=fromJSON(json8, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json8, flatten = TRUE)$is_closed)
-
-r9 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[9]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json9 <- httr::content(r9, as = "text", encoding = "UTF-8")
-
-i = tibble("Name" = fromJSON(json9, flatten = TRUE)$name,"Display Phone" = fromJSON(json9, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json9, flatten = TRUE)$rating,"Location"=fromJSON(json9, flatten = TRUE)$location$address1,"Price"=fromJSON(json9, flatten = TRUE)$price,"Transactions"=fromJSON(json9, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json9, flatten = TRUE)$is_closed)
-
-r10 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[10]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json10 <- httr::content(r10, as = "text", encoding = "UTF-8")
-
-e = tibble("Name" = fromJSON(json10, flatten = TRUE)$name,"Display Phone" = fromJSON(json10, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json10, flatten = TRUE)$rating,"Location"=fromJSON(json10, flatten = TRUE)$location$address1,"Price"=fromJSON(json10, flatten = TRUE)$price,"Transactions"=fromJSON(json10, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json10, flatten = TRUE)$is_closed)
-
-r11 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[11]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json11 <- httr::content(r11, as = "text", encoding = "UTF-8")
-
-f = tibble("Name" = fromJSON(json11, flatten = TRUE)$name,"Display Phone" = fromJSON(json11, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json11, flatten = TRUE)$rating,"Location"=fromJSON(json11, flatten = TRUE)$location$address1,"Price"=fromJSON(json11, flatten = TRUE)$price,"Transactions"=fromJSON(json11, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json11, flatten = TRUE)$is_closed)
-
-r12 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[12]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json12 <- httr::content(r12, as = "text", encoding = "UTF-8")
-
-g = tibble("Name" = fromJSON(json12, flatten = TRUE)$name,"Display Phone" = fromJSON(json12, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json12, flatten = TRUE)$rating,"Location"=fromJSON(json12, flatten = TRUE)$location$address1,"Price"=fromJSON(json12, flatten = TRUE)$price,"Transactions"=fromJSON(json12, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json12, flatten = TRUE)$is_closed)
-
-r13 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[13]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json13 <- httr::content(r13, as = "text", encoding = "UTF-8")
-
-h = tibble("Name" = fromJSON(json13, flatten = TRUE)$name,"Display Phone" = fromJSON(json13, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json13, flatten = TRUE)$rating,"Location"=fromJSON(json13, flatten = TRUE)$location$address1,"Price"=fromJSON(json13, flatten = TRUE)$price,"Transactions"=fromJSON(json13, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json13, flatten = TRUE)$is_closed)
-
-r14 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[14]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json14 <- httr::content(r14, as = "text", encoding = "UTF-8")
-
-i = tibble("Name" = fromJSON(json14, flatten = TRUE)$name,"Display Phone" = fromJSON(json14, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json14, flatten = TRUE)$rating,"Location"=fromJSON(json14, flatten = TRUE)$location$address1,"Price"=fromJSON(json14, flatten = TRUE)$price,"Transactions"=fromJSON(json14, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json14, flatten = TRUE)$is_closed)
-
-r15 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[15]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json15 <- httr::content(r15, as = "text", encoding = "UTF-8")
-
-j = tibble("Name" = fromJSON(json15, flatten = TRUE)$name,"Display Phone" = fromJSON(json15, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json15, flatten = TRUE)$rating,"Location"=fromJSON(json15, flatten = TRUE)$location$address1,"Price"=fromJSON(json15, flatten = TRUE)$price,"Transactions"=fromJSON(json15, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json15, flatten = TRUE)$is_closed)
-
-r16 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[16]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json16 <- httr::content(r16, as = "text", encoding = "UTF-8")
-
-k = tibble("Name" = fromJSON(json16, flatten = TRUE)$name,"Display Phone" = fromJSON(json16, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json16, flatten = TRUE)$rating,"Location"=fromJSON(json16, flatten = TRUE)$location$address1,"Price"=fromJSON(json16, flatten = TRUE)$price,"Transactions"=fromJSON(json16, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json16, flatten = TRUE)$is_closed)
-
-r17 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[17]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json17 <- httr::content(r17, as = "text", encoding = "UTF-8")
-
-l = tibble("Name" = fromJSON(json17, flatten = TRUE)$name,"Display Phone" = fromJSON(json17, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json17, flatten = TRUE)$rating,"Location"=fromJSON(json17, flatten = TRUE)$location$address1,"Price"=fromJSON(json17, flatten = TRUE)$price,"Transactions"=fromJSON(json17, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json17, flatten = TRUE)$is_closed)
-
-
-r18 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[18]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json18 <- httr::content(r18, as = "text", encoding = "UTF-8")
-
-m = tibble("Name" = fromJSON(json18, flatten = TRUE)$name,"Display Phone" = fromJSON(json18, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json18, flatten = TRUE)$rating,"Location"=fromJSON(json18, flatten = TRUE)$location$address1,"Price"=fromJSON(json18, flatten = TRUE)$price,"Transactions"=fromJSON(json18, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json18, flatten = TRUE)$is_closed)
-
-r19 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[19]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json19 <- httr::content(r19, as = "text", encoding = "UTF-8")
-
-n = tibble("Name" = fromJSON(json19, flatten = TRUE)$name,"Display Phone" = fromJSON(json19, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json19, flatten = TRUE)$rating,"Location"=fromJSON(json19, flatten = TRUE)$location$address1,"Price"=fromJSON(json19, flatten = TRUE)$price,"Transactions"=fromJSON(json19, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json19, flatten = TRUE)$is_closed)
-
-r20 <- GET(
-    str_glue("https://api.yelp.com/v3/businesses/{id}",id=x[20]),
-    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
-    query = list(
-    )
-)
-json20 <- httr::content(r20, as = "text", encoding = "UTF-8")
-
-o = tibble("Name" = fromJSON(json20, flatten = TRUE)$name,"Display Phone" = fromJSON(json20, flatten = TRUE)$display_phone,"Average Rating"=fromJSON(json20, flatten = TRUE)$rating,"Location"=fromJSON(json20, flatten = TRUE)$location$address1,"Price"=fromJSON(json20, flatten = TRUE)$price,"Transactions"=fromJSON(json20, flatten = TRUE)$transactions,"If Store is closed currently"=fromJSON(json20, flatten = TRUE)$is_closed)
-
-z = tibble("Name" = c(a$Name,b$Name,c$Name,d$Name,e$Name,f$Name,g$Name,h$Name,i$Name,j$Name,k$Name,l$Name,m$Name,n$Name,o$Name),"Display Phone" = c(a$`Display Phone`,b$`Display Phone`,c$`Display Phone`,d$`Display Phone`,e$`Display Phone`,f$`Display Phone`,g$`Display Phone`,h$`Display Phone`,i$`Display Phone`,j$`Display Phone`,k$`Display Phone`,l$`Display Phone`,m$`Display Phone`,n$`Display Phone`,o$`Display Phone`),"Average Rating"=c(a$`Average Rating`,b$`Average Rating`,c$`Average Rating`,d$`Average Rating`,e$`Average Rating`,f$`Average Rating`,g$`Average Rating`,h$`Average Rating`,i$`Average Rating`,j$`Average Rating`,k$`Average Rating`,l$`Average Rating`,m$`Average Rating`,n$`Average Rating`,o$`Average Rating`),"Location"=c(a$Location,b$Location,c$Location,d$Location,e$Location,f$Location,g$Location,h$Location,i$Location,j$Location,j$Location,k$Location,l$Location,m$Location,n$Location,o$Location),"Price"=c(a$Price,b$Price,c$Price,d$Price,e$Price,f$Price,g$Price,h$Price,i$Price,j$Price,k$Price,l$Price,m$Price,n$Price,o$Price),"Transactions"=c(a$Transactions,b$Transactions,c$Transactions,d$Transactions,e$Transactions,f$Transactions,g$Transactions,h$Transactions,i$Transactions,j$Transactions,k$Transactions,l$Transactions,m$Transactions,n$Transactions,o$Transactions),"If Store is closed currently"=c(a$`If Store is closed currently`,b$`If Store is closed currently`,c$`If Store is closed currently`,d$`If Store is closed currently`,e$`If Store is closed currently`,f$`If Store is closed currently`,g$`If Store is closed currently`,h$`If Store is closed currently`,i$`If Store is closed currently`,j$`If Store is closed currently`,k$`If Store is closed currently`,l$`If Store is closed currently`,m$`If Store is closed currently`,n$`If Store is closed currently`,o$`If Store is closed currently` ))
-
-z$`If Store is closed currently` = ifelse(z$`If Store is closed currently`=="FALSE","OPEN","CLOSED")
+final = fromJSON(json, flatten = TRUE)$businesses[-26,] 
+low = fromJSON(json, flatten = TRUE)$businesses[-26,] %>% select(name)
+x = x[-26,]
+z = tibble("Name" = final$name,"Display Phone" = final$display_phone, "Average Rating" = final$rating,"Location" = final$location.address1,"Price" = final$price,"If store is closed currently" = final$is_closed)
+z$`If store is closed currently` = ifelse(z$`If store is closed currently`=="False","Open","Closed")
+z = as.data.frame(z)
 
 r1 <- GET(
     str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[1]),
@@ -536,8 +326,420 @@ word.20 = paste(unlist(word.20), collapse =" ")
 word20 = Corpus(VectorSource(word.20))
 #res<-wordcloud(word20,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
 
-final_words = rbind(word.1,word.2,word.3,word.4,word.5,word.6,word.7,word.8,word.9,word.10,word.11,word.12,word.13,word.14,word.15,word.16,word.17,word.18,word.19,word.20)
+r21 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[21]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r21)
+json21 <- httr::content(r21, as = "text", encoding = "UTF-8")
+word.21 = fromJSON(json21, flatten = TRUE)$reviews %>% select(text)
+word.21 = paste(unlist(word.21), collapse =" ")
+word21 = Corpus(VectorSource(word.21))
+#res<-wordcloud(word21,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
 
+r22 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[22]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r22)
+json22 <- httr::content(r22, as = "text", encoding = "UTF-8")
+word.22 = fromJSON(json20, flatten = TRUE)$reviews %>% select(text)
+word.22 = paste(unlist(word.22), collapse =" ")
+word22 = Corpus(VectorSource(word.22))
+#res<-wordcloud(word22,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r23 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[23]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r23)
+json23 <- httr::content(r23, as = "text", encoding = "UTF-8")
+word.23 = fromJSON(json23, flatten = TRUE)$reviews %>% select(text)
+word.23 = paste(unlist(word.23), collapse =" ")
+word23 = Corpus(VectorSource(word.23))
+#res<-wordcloud(word23,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r24 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[24]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r24)
+json24 <- httr::content(r24, as = "text", encoding = "UTF-8")
+word.24 = fromJSON(json24, flatten = TRUE)$reviews %>% select(text)
+word.24 = paste(unlist(word.24), collapse =" ")
+word24 = Corpus(VectorSource(word.24))
+#res<-wordcloud(word24,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r25 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[25]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r25)
+json25 <- httr::content(r25, as = "text", encoding = "UTF-8")
+word.25 = fromJSON(json25, flatten = TRUE)$reviews %>% select(text)
+word.25 = paste(unlist(word.25), collapse =" ")
+word25 = Corpus(VectorSource(word.25))
+#res<-wordcloud(word25,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r26 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[26]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r26)
+json26 <- httr::content(r26, as = "text", encoding = "UTF-8")
+word.26 = fromJSON(json26, flatten = TRUE)$reviews %>% select(text)
+word.26 = paste(unlist(word.26), collapse =" ")
+word26 = Corpus(VectorSource(word.26))
+#res<-wordcloud(word26,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r27 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[20]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r27)
+json27 <- httr::content(r27, as = "text", encoding = "UTF-8")
+word.27 = fromJSON(json27, flatten = TRUE)$reviews %>% select(text)
+word.27 = paste(unlist(word.27), collapse =" ")
+word27 = Corpus(VectorSource(word.27))
+#res<-wordcloud(word27,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r28 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[28]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r28)
+json28 <- httr::content(r28, as = "text", encoding = "UTF-8")
+word.28 = fromJSON(json28, flatten = TRUE)$reviews %>% select(text)
+word.28 = paste(unlist(word.28), collapse =" ")
+word28 = Corpus(VectorSource(word.28))
+#res<-wordcloud(word28,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+
+r29 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[29]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r29)
+json29 <- httr::content(r29, as = "text", encoding = "UTF-8")
+word.29 = fromJSON(json29, flatten = TRUE)$reviews %>% select(text)
+word.29 = paste(unlist(word.29), collapse =" ")
+word29 = Corpus(VectorSource(word.29))
+#res<-wordcloud(word29,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+
+r30 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[30]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r30)
+json30 <- httr::content(r30, as = "text", encoding = "UTF-8")
+word.30 = fromJSON(json30, flatten = TRUE)$reviews %>% select(text)
+word.30 = paste(unlist(word.30), collapse =" ")
+word30 = Corpus(VectorSource(word.30))
+#res<-wordcloud(word30,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+
+r31 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[31]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r31)
+json31 <- httr::content(r31, as = "text", encoding = "UTF-8")
+word.31 = fromJSON(json31, flatten = TRUE)$reviews %>% select(text)
+word.31 = paste(unlist(word.31), collapse =" ")
+word31 = Corpus(VectorSource(word.31))
+#res<-wordcloud(word31,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+
+r32 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[32]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r32)
+json32 <- httr::content(r32, as = "text", encoding = "UTF-8")
+word.32 = fromJSON(json32, flatten = TRUE)$reviews %>% select(text)
+word.32 = paste(unlist(word.32), collapse =" ")
+word32 = Corpus(VectorSource(word.32))
+#res<-wordcloud(word32,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r33 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[33]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r33)
+json33 <- httr::content(r33, as = "text", encoding = "UTF-8")
+word.33 = fromJSON(json33, flatten = TRUE)$reviews %>% select(text)
+word.33 = paste(unlist(word.33), collapse =" ")
+word33 = Corpus(VectorSource(word.33))
+#res<-wordcloud(word33,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r34 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[34]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r34)
+json34 <- httr::content(r34, as = "text", encoding = "UTF-8")
+word.34 = fromJSON(json34, flatten = TRUE)$reviews %>% select(text)
+word.34 = paste(unlist(word.34), collapse =" ")
+word34 = Corpus(VectorSource(word.34))
+#res<-wordcloud(word34,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r35 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[35]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r35)
+json35 <- httr::content(r35, as = "text", encoding = "UTF-8")
+word.35 = fromJSON(json35, flatten = TRUE)$reviews %>% select(text)
+word.35 = paste(unlist(word.35), collapse =" ")
+word35 = Corpus(VectorSource(word.35))
+#res<-wordcloud(word35,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+
+r36 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[36]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r36)
+json36 <- httr::content(r36, as = "text", encoding = "UTF-8")
+word.36 = fromJSON(json36, flatten = TRUE)$reviews %>% select(text)
+word.36 = paste(unlist(word.36), collapse =" ")
+word36 = Corpus(VectorSource(word.36))
+#res<-wordcloud(word36,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r37 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[37]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r37)
+json37 <- httr::content(r37, as = "text", encoding = "UTF-8")
+word.37 = fromJSON(json37, flatten = TRUE)$reviews %>% select(text)
+word.37 = paste(unlist(word.37), collapse =" ")
+word37 = Corpus(VectorSource(word.37))
+#res<-wordcloud(word37,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r38 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[38]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r38)
+json38 <- httr::content(r38, as = "text", encoding = "UTF-8")
+word.38 = fromJSON(json38, flatten = TRUE)$reviews %>% select(text)
+word.38 = paste(unlist(word.38), collapse =" ")
+word38 = Corpus(VectorSource(word.38))
+#res<-wordcloud(word38,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r39 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[39]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r39)
+json39 <- httr::content(r39, as = "text", encoding = "UTF-8")
+word.39 = fromJSON(json39, flatten = TRUE)$reviews %>% select(text)
+word.39 = paste(unlist(word.39), collapse =" ")
+word39 = Corpus(VectorSource(word.39))
+#res<-wordcloud(word39,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r40 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[40]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r40)
+json40 <- httr::content(r40, as = "text", encoding = "UTF-8")
+word.40 = fromJSON(json40, flatten = TRUE)$reviews %>% select(text)
+word.40 = paste(unlist(word.40), collapse =" ")
+word40 = Corpus(VectorSource(word.40))
+#res<-wordcloud(word40,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r41 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[41]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r41)
+json41 <- httr::content(r41, as = "text", encoding = "UTF-8")
+word.41 = fromJSON(json41, flatten = TRUE)$reviews %>% select(text)
+word.41 = paste(unlist(word.41), collapse =" ")
+word41 = Corpus(VectorSource(word.41))
+#res<-wordcloud(word41,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r42 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[42]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r42)
+json42 <- httr::content(r42, as = "text", encoding = "UTF-8")
+word.42 = fromJSON(json42, flatten = TRUE)$reviews %>% select(text)
+word.42 = paste(unlist(word.42), collapse =" ")
+word42 = Corpus(VectorSource(word.42))
+#res<-wordcloud(word42,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r43 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[43]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r43)
+json43 <- httr::content(r43, as = "text", encoding = "UTF-8")
+word.43 = fromJSON(json43, flatten = TRUE)$reviews %>% select(text)
+word.43 = paste(unlist(word.43), collapse =" ")
+word43 = Corpus(VectorSource(word.43))
+#res<-wordcloud(word43,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r44 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[44]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r44)
+json44 <- httr::content(r44, as = "text", encoding = "UTF-8")
+word.44 = fromJSON(json44, flatten = TRUE)$reviews %>% select(text)
+word.44 = paste(unlist(word.44), collapse =" ")
+word44 = Corpus(VectorSource(word.44))
+#res<-wordcloud(word44,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r45 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[45]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r45)
+json45 <- httr::content(r45, as = "text", encoding = "UTF-8")
+word.45 = fromJSON(json45, flatten = TRUE)$reviews %>% select(text)
+word.45 = paste(unlist(word.45), collapse =" ")
+word45 = Corpus(VectorSource(word.45))
+#res<-wordcloud(word45,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r46 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[46]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r46)
+json46 <- httr::content(r46, as = "text", encoding = "UTF-8")
+word.46 = fromJSON(json46, flatten = TRUE)$reviews %>% select(text)
+word.46 = paste(unlist(word.46), collapse =" ")
+word46 = Corpus(VectorSource(word.46))
+#res<-wordcloud(word46,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r47 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[47]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r47)
+json47 <- httr::content(r47, as = "text", encoding = "UTF-8")
+word.47 = fromJSON(json47, flatten = TRUE)$reviews %>% select(text)
+word.47 = paste(unlist(word.47), collapse =" ")
+word47 = Corpus(VectorSource(word.47))
+#res<-wordcloud(word47,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r48 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[48]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r48)
+json48 <- httr::content(r48, as = "text", encoding = "UTF-8")
+word.48 = fromJSON(json48, flatten = TRUE)$reviews %>% select(text)
+word.48 = paste(unlist(word.48), collapse =" ")
+word48 = Corpus(VectorSource(word.48))
+#res<-wordcloud(word48,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+r49 <- GET(
+    str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[49]),
+    add_headers(Authorization = paste("Bearer", Sys.getenv("YELP_TOKEN"))),
+    query = list(
+        locale = "en_US"
+    )
+)
+stop_for_status(r49)
+json49 <- httr::content(r49, as = "text", encoding = "UTF-8")
+word.49 = fromJSON(json49, flatten = TRUE)$reviews %>% select(text)
+word.49 = paste(unlist(word.49), collapse =" ")
+word49 = Corpus(VectorSource(word.49))
+#res<-wordcloud(word49,max.words = 100,min.freq = 1,colors=brewer.pal(8, "Dark2"))
+
+
+
+final_words = rbind(word.1,word.2,word.3,word.4,word.5,word.6,word.7,word.8,word.9,word.10,word.11,word.12,word.13,word.14,word.15,word.16,word.17,word.18,word.19,word.20,word.21,word.21,word.22,word.23,word.24,word.25,word.26,word.27,word.28,word.29,word.30,word.31,word.31,word.32,word.33,word.34,word.35,word.36,word.37,word.38,word.39,word.40,word.41,word.42,word.43,word.44,word.44,word.45,word.46,word.47,word.48,word.49)
 
 ui <- fluidPage(
 
@@ -548,7 +750,7 @@ ui <- fluidPage(
     
     sidebarLayout(
         sidebarPanel(
-            selectInput("NameofRestaurant", "Name of Restaurant", choices = c("-",z$Name))
+            selectInput("NameofRestaurant", "Name of Restaurant", choices = c("-",low$name))
         ),
 
         # Show a plot 
@@ -559,7 +761,6 @@ ui <- fluidPage(
     )
 )
 
-# Define server logic required to draw a histogram
 server <- function(input, output) {
 
     output$table <- renderTable({
@@ -573,16 +774,54 @@ server <- function(input, output) {
                       "Burgers and Brew" = final_words[2],
                       "Dutch Bros Coffee" = final_words[3],
                       "Four Seasons Gourmet Chinese Restaurant" = final_words[4],
+                      "Taqueria Davis" = final_words[5],
+                      "Nugget Markets" = final_words[6] ,
+                      "Mikuni Japanese Restaurant and Sushi Bar"=final_words[7],
+                      "Zumapoke & Lush Ice" = final_words[8],
+                      "Sweet and Shavery" = final_words[9],
                       "Taqueria Guadalajara" = final_words[10],
                       "Woodstock's Pizza Davis" = final_words[11],
                       "Temple Coffee Roasters" = final_words[12],
                       "Crepeville" = final_words[13],
                       "Thai Canteen" = final_words[14],
+                      "Blaze Pizza" = final_words[15],
                       "Tommy J's Grill & Catering" = final_words[16],
                       "Raja's Tandoor" = final_words[17],
                       "Tea List" = final_words[18],
-                      "Fish's Wild Island Grill" = final_words[19])
-        wordcloud(data,max.words = 100,min.freq = 15,colors=brewer.pal(8, "Dark2")) 
+                      "Fish's Wild Island Grill" = final_words[19],
+                      "In-N-Out Burger"= final_words[20],
+                      "Zia's Delicatessen"=final_words[21],
+                      "Davis Creamery"=final_words[22],
+                      "Konditorei Austrian Pastry Cafe"=final_words[24],
+                      "Shah's Halal Food - University Mall"=final_words[25],
+                      "Root Of Happiness"=final_words[26],
+                      "Thai Nakorn"=final_words[27],
+                      "Davis Food Co-op"=final_words[28],
+                      "Village Bakery"=final_words[29],
+                      "Let Them Eat Cake"=final_words[30],
+                      "Mishka's Cafe"=final_words[31],
+                      "Wok of Flame"=final_words[32],
+                      "Zen Toro Japanese Bistro & Sushi Bar"=final_words[34],
+                      "Yoloberry Yogurt"=final_words[35],
+                      "Yakitori Yuchan"=final_words[36],
+                      "Delta of Venus"=final_words[37],
+                      "MandRo Teahouse"=final_words[38],
+                      "Yeti Restaurant"=final_words[39],
+                      "Ike's Love & Sandwiches"=final_words[40],
+                      "Kathmandu Kitchen"=final_words[41],
+                      "Paesanos"=final_words[42],
+                      "Teabo Café"=final_words[43],
+                      "Tasty Gourmet"=final_words[44],
+                      "Cultivé Frozen Yogurt"=final_words[45],
+                      "Huku Japanese Bistro"=final_words[47],
+                      "The Posh Bagel"=final_words[48],
+                      "Cafe Bernardo"=final_words[49],
+                      "Taqueria Guadalajara Grill"=final_words[50],
+                      "Sophia's Thai Bar & Kitchen"=final_words[51],
+                      "Black Bear Diner"=final_words[52]
+                      )
+        
+        wordcloud(data,max.words = 100,min.freq = 10,colors=brewer.pal(8, "Dark2")) 
     })
         
 }
