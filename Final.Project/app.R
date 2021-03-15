@@ -26,8 +26,58 @@ final = fromJSON(json, flatten = TRUE)$businesses[-26,]
 low = fromJSON(json, flatten = TRUE)$businesses[-26,] %>% select(name)
 x = x[-26,]
 z = tibble("Name" = final$name,"Display Phone" = final$display_phone, "Average Rating" = final$rating,"Location" = final$location.address1,"Price" = final$price,"If store is closed currently" = final$is_closed)
-z$`If store is closed currently` = ifelse(z$`If store is closed currently`=="False","Open","Closed")
+z$`If store is closed currently` = ifelse(z$`If store is closed currently`=="FALSE","Open","Closed")
 z = as.data.frame(z)
+final$price[is.na(final$price)] <- "$$"
+final$categories.=final$categories[[1]][1,2]
+final$categories.[2]=final$categories[[2]][1,2]
+final$categories.[3]=final$categories[[3]][1,2]
+final$categories.[4]=final$categories[[4]][1,2]
+final$categories.[5]=final$categories[[5]][1,2]
+final$categories.[6]=final$categories[[6]][1,2]
+final$categories.[7]=final$categories[[7]][1,2]
+final$categories.[8]=final$categories[[8]][1,2]
+final$categories.[9]=final$categories[[9]][1,2]
+final$categories.[10]=final$categories[[10]][1,2]
+final$categories.[11]=final$categories[[11]][1,2]
+final$categories.[12]=final$categories[[12]][1,2]
+final$categories.[13]=final$categories[[13]][1,2]
+final$categories.[14]=final$categories[[14]][1,2]
+final$categories.[15]=final$categories[[15]][1,2]
+final$categories.[16]=final$categories[[16]][1,2]
+final$categories.[17]=final$categories[[17]][1,2]
+final$categories.[18]=final$categories[[18]][1,2]
+final$categories.[19]=final$categories[[19]][1,2]
+final$categories.[20]=final$categories[[20]][1,2]
+final$categories.[21]=final$categories[[21]][1,2]
+final$categories.[22]=final$categories[[22]][1,2]
+final$categories.[23]=final$categories[[23]][1,2]
+final$categories.[24]=final$categories[[24]][1,2]
+final$categories.[25]=final$categories[[25]][1,2]
+final$categories.[26]=final$categories[[26]][1,2]
+final$categories.[27]=final$categories[[27]][1,2]
+final$categories.[28]=final$categories[[28]][1,2]
+final$categories.[29]=final$categories[[29]][1,2]
+final$categories.[30]=final$categories[[30]][1,2]
+final$categories.[31]=final$categories[[31]][1,2]
+final$categories.[32]=final$categories[[32]][1,2]
+final$categories.[33]=final$categories[[33]][1,2]
+final$categories.[34]=final$categories[[34]][1,2]
+final$categories.[35]=final$categories[[35]][1,2]
+final$categories.[36]=final$categories[[36]][1,2]
+final$categories.[37]=final$categories[[37]][1,2]
+final$categories.[38]=final$categories[[38]][1,2]
+final$categories.[39]=final$categories[[39]][1,2]
+final$categories.[40]=final$categories[[40]][1,2]
+final$categories.[41]=final$categories[[41]][1,2]
+final$categories.[42]=final$categories[[42]][1,2]
+final$categories.[43]=final$categories[[43]][1,2]
+final$categories.[44]=final$categories[[44]][1,2]
+final$categories.[45]=final$categories[[45]][1,2]
+final$categories.[46]=final$categories[[46]][1,2]
+final$categories.[47]=final$categories[[47]][1,2]
+final$categories.[48]=final$categories[[48]][1,2]
+final$categories.[49]=final$categories[[49]][1,2]
 
 r1 <- GET(
     str_glue("https://api.yelp.com/v3/businesses/{id}/reviews", id = x[1]),
@@ -750,7 +800,9 @@ ui <- fluidPage(
     
     sidebarLayout(
         sidebarPanel(
-            selectInput("NameofRestaurant", "Name of Restaurant", choices = c("-",low$name))
+            selectInput("Price","Expense of Restaurant with $ - Lowest",choices = c("-",final$price)),
+            selectInput("Category","Type of Food",choices = c("-",""),selected = ""),
+            selectInput("NameofRestaurant", "Name of Restaurant", choices = c("-",""),selected = "")
         ),
 
         # Show a plot 
@@ -761,11 +813,21 @@ ui <- fluidPage(
     )
 )
 
-server <- function(input, output) {
+server <- function(session,input, output) {
 
+    
+    observeEvent(
+        input$Price,
+        updateSelectInput(session,"Category","Type of Food",choices = c("-",final$categories.[final$price==input$Price] ))
+    )
+    observeEvent(
+        input$Category,
+        updateSelectInput(session,"NameofRestaurant", "Name of Restaurant",choices = c("-",final$name[final$categories.==input$Category & final$price==input$Price ])))
+    
     output$table <- renderTable({
-        z_filter = subset(z,z$Name == input$NameofRestaurant)
-    })
+        z_filter = subset(z, z$Name == input$NameofRestaurant)})
+                 
+    
     
     output$plot <- renderPlot({
         data = switch(input$NameofRestaurant,
