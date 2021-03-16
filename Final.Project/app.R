@@ -8,6 +8,7 @@ library(RCurl)
 library(XML)
 library(wordcloud)
 library(RColorBrewer)
+library(bslib)
 
 #Yelp Token
 Sys.setenv(YELP_TOKEN = "zB_vgAi6chPRyDfgrHXToL2GAUWb6EzginrW_2eQHoQnkMpONlPUon_F2wzH9YGgbYidaHkn3jMtqxh84YIhavfDHE0kajXKpSg5Nbm1p-98XVc2L59WW4BLV7idX3Yx")
@@ -794,6 +795,7 @@ word49 = Corpus(VectorSource(word.49))
 final_words = rbind(word.1,word.2,word.3,word.4,word.5,word.6,word.7,word.8,word.9,word.10,word.11,word.12,word.13,word.14,word.15,word.16,word.17,word.18,word.19,word.20,word.21,word.21,word.22,word.23,word.24,word.25,word.26,word.27,word.28,word.29,word.30,word.31,word.31,word.32,word.33,word.34,word.35,word.36,word.37,word.38,word.39,word.40,word.41,word.42,word.43,word.44,word.44,word.45,word.46,word.47,word.48,word.49)
 
 ui <- fluidPage(
+    theme = bs_theme(version = 4,bootswatch = "lux"),
 
     # Application title
     titlePanel("Information for Restaurants in Davis, California"),
